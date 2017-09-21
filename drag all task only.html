@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<head>
+<meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+<title>Multiselection and Indent/Outdent tasks</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src='codebase/dhtmlxgantt.js' type='text/javascript' charset='utf-8'></script>
+<script src='codebase/ext/dhtmlxgantt_multiselect.js' type='text/javascript' charset='utf-8'></script>
+<script src='codebase/ext/dhtmlxgantt_auto_scheduling.js' type='text/javascript' charset='utf-8'></script>
+<link rel='stylesheet' href='codebase/dhtmlxgantt.css' type='text/css' media='screen' title='no title' charset='utf-8'>
+<style type='text/css'>
+	html, body{
+	 padding:0px; 
+	 margin:0px; 
+	 overflow: hidden;
+
+	}
+	
+</style>
+<script type='text/javascript'>
+	var moveall=false;
+	$(document).ready(function(){
+		$('#check_box').change(function(){
+			if(this.checked){
+				moveall=true;
+			}
+			else{
+				moveall=false;
+			}
+		});
+	});	
+
+	
+	function initGantt(gantt){
+		
+		gantt.config.xml_date = "%Y-%m-%d %H:%i"; 
+		gantt.config.scale_unit = "day";
+		gantt.config.step = 1;
+		gantt.config.date_scale = "%d";
+		gantt.config.scale_height = 50;
+		gantt.config.subscales = [
+			{unit: "day", step: 1, date: "%j, %D"}
+		];
+		gantt.templates.task_class = 
+		gantt.templates.grid_row_class = 
+		gantt.templates.task_row_class = function (start, end, task) {
+			if (gantt.isSelectedTask(task.id))
+				return "gantt_selected";
+		};
+		gantt.config.auto_scheduling = true;
+		gantt.config.autoscroll = true;
+		gantt.config.autoscroll_speed = 50;
+		gantt.init("gantt_here");
+        gantt.load('data.php');//loads data to Gantt from the database
+        var dp=new gantt.dataProcessor("data.php");  
+		dp.init(gantt);
+	}
+
+	gantt.attachEvent("onTaskDrag", function(id, mode, task, original){
+	    var modes = gantt.config.drag_mode;
+	    if(mode == modes.move && moveall){
+	        var diff = task.start_date - original.start_date;
+	        gantt.eachTask(function(child){
+	        	
+	            child.start_date = new Date(+child.start_date + diff);
+	            child.end_date = new Date(+child.end_date + diff);
+	            gantt.refreshTask(child.id, true);
+	            
+	        });
+	    }
+    	return true;
+	});
+
+	gantt.attachEvent("onAfterTaskDrag", function(id, mode, e){
+	    var modes = gantt.config.drag_mode;
+	    if(mode == modes.move && moveall){
+	        var state = gantt.getState();
+	        gantt.eachTask(function(task){          
+	            task.start_date = gantt.roundDate({
+	                date:task.start_date, 
+	                unit:state.scale_unit, 
+	                step:state.scale_step
+	            });         
+	            task.end_date = gantt.calculateEndDate(task.start_date, task.duration, gantt.config.duration_unit);
+	            gantt.updateTask(task.id);
+	        });
+	    }
+	});
+
+</script>
+
+</head>
+<body onload='initGantt(gantt);'>
+	<div style="text-align: center;">
+		<label>Gantt Chart Multi Task Slection Implemetation</label><br>
+		<label>Move all</label>
+		<input type="checkbox" id="check_box" name="checkbox">
+	</div>
+	<div id='gantt_here' style='width:1300px; height:570px;'>
+		
+	</div>
+	
+</body>

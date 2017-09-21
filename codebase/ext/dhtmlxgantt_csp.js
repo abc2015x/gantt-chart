@@ -1,0 +1,14 @@
+/*
+@license
+
+dhtmlxGantt v.4.2.1 Professional Evaluation
+This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com to get Commercial or Enterprise license. Usage without proper license is prohibited.
+
+(c) Dinamenta, UAB.
+*/
+Gantt.plugin(function(t){t.date.date_to_str=function(e,i){return function(n){return e.replace(/%[a-zA-Z]/g,function(e){switch(e){case"%d":return i?t.date.to_fixed(n.getUTCDate()):t.date.to_fixed(n.getDate());case"%m":return i?t.date.to_fixed(n.getUTCMonth()+1):t.date.to_fixed(n.getMonth()+1);case"%j":return i?n.getUTCDate():n.getDate();case"%n":return i?n.getUTCMonth()+1:n.getMonth()+1;case"%y":return i?t.date.to_fixed(n.getUTCFullYear()%100):t.date.to_fixed(n.getFullYear()%100);case"%Y":return i?n.getUTCFullYear():n.getFullYear();
+case"%D":return i?t.locale.date.day_short[n.getUTCDay()]:t.locale.date.day_short[n.getDay()];case"%l":return i?t.locale.date.day_full[n.getUTCDay()]:t.locale.date.day_full[n.getDay()];case"%M":return i?t.locale.date.month_short[n.getUTCMonth()]:t.locale.date.month_short[n.getMonth()];case"%F":return i?t.locale.date.month_full[n.getUTCMonth()]:t.locale.date.month_full[n.getMonth()];case"%h":return i?t.date.to_fixed((n.getUTCHours()+11)%12+1):t.date.to_fixed((n.getHours()+11)%12+1);case"%g":return i?(n.getUTCHours()+11)%12+1:(n.getHours()+11)%12+1;
+case"%G":return i?n.getUTCHours():n.getHours();case"%H":return i?t.date.to_fixed(n.getUTCHours()):t.date.to_fixed(n.getHours());case"%i":return i?t.date.to_fixed(n.getUTCMinutes()):t.date.to_fixed(n.getMinutes());case"%a":return i?n.getUTCHours()>11?"pm":"am":n.getHours()>11?"pm":"am";case"%A":return i?n.getUTCHours()>11?"PM":"AM":n.getHours()>11?"PM":"AM";case"%s":return i?t.date.to_fixed(n.getUTCSeconds()):t.date.to_fixed(n.getSeconds());case"%W":return i?t.date.to_fixed(t.date.getUTCISOWeek(n)):t.date.to_fixed(t.date.getISOWeek(n));
+default:return e}})}},t.date.str_to_date=function(e,i){return function(n){for(var a=[0,0,1,0,0,0],r=n.match(/[a-zA-Z]+|[0-9]+/g),s=e.match(/%[a-zA-Z]/g),o=0;o<s.length;o++)switch(s[o]){case"%j":case"%d":a[2]=r[o]||1;break;case"%n":case"%m":a[1]=(r[o]||1)-1;break;case"%y":a[0]=1*r[o]+(r[o]>50?1900:2e3);break;case"%g":case"%G":case"%h":case"%H":a[3]=r[o]||0;break;case"%i":a[4]=r[o]||0;break;case"%Y":a[0]=r[o]||0;break;case"%a":case"%A":a[3]=a[3]%12+("am"==(r[o]||"").toLowerCase()?0:12);break;case"%s":
+a[5]=r[o]||0;break;case"%M":a[1]=t.locale.date.month_short_hash[r[o]]||0;break;case"%F":a[1]=t.locale.date.month_full_hash[r[o]]||0}return i?new Date(Date.UTC(a[0],a[1],a[2],a[3],a[4],a[5])):new Date(a[0],a[1],a[2],a[3],a[4],a[5])}}});
+//# sourceMappingURL=../sources/ext/dhtmlxgantt_csp.js.map

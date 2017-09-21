@@ -1,0 +1,136 @@
+
+
+====================================
+Log started, 08/08/2017 03:45:13
+====================================
+
+SELECT id,start_date,duration,text,progress,parent FROM gantt_tasks ORDER BY sortorder
+
+SELECT id,source,target,type FROM gantt_links
+
+Done in 0.029000997543335s
+
+
+
+====================================
+Log started, 08/08/2017 03:47:27
+====================================
+
+SELECT id,start_date,duration,text,progress,parent FROM gantt_tasks ORDER BY sortorder
+
+SELECT id,source,target,type FROM gantt_links
+
+Done in 0.022001981735229s
+
+
+
+====================================
+Log started, 08/08/2017 03:47:29
+====================================
+
+SELECT id,start_date,duration,text,progress,parent FROM gantt_tasks ORDER BY sortorder
+
+SELECT id,source,target,type FROM gantt_links
+
+Done in 0.23401403427124s
+
+
+
+====================================
+Log started, 08/08/2017 03:48:32
+====================================
+
+SELECT id,start_date,duration,text,progress,parent FROM gantt_tasks ORDER BY sortorder
+
+SELECT id,source,target,type FROM gantt_links
+
+Done in 0.12600708007812s
+
+
+
+====================================
+Log started, 08/08/2017 03:48:36
+====================================
+
+SELECT id,start_date,duration,text,progress,parent FROM gantt_tasks ORDER BY sortorder
+
+SELECT id,source,target,type FROM gantt_links
+
+Done in 0.26201510429382s
+
+
+
+====================================
+Log started, 08/08/2017 03:49:23
+====================================
+
+SELECT id,start_date,duration,text,progress,parent FROM gantt_tasks ORDER BY sortorder
+
+SELECT id,source,target,type FROM gantt_links
+
+Done in 0.11500692367554s
+
+
+
+====================================
+Log started, 08/08/2017 03:49:25
+====================================
+
+SELECT id,start_date,duration,text,progress,parent FROM gantt_tasks ORDER BY sortorder
+
+SELECT id,source,target,type FROM gantt_links
+
+Done in 0.029001951217651s
+
+
+
+====================================
+Log started, 08/08/2017 03:49:31
+====================================
+
+
+
+====================================
+Log started, 08/08/2017 03:52:37
+====================================
+
+SELECT id,start_date,duration,text,progress,parent FROM gantt_tasks ORDER BY sortorder
+
+SELECT id,source,target,type FROM gantt_links
+
+Done in 0.1080060005188s
+
+
+
+====================================
+Log started, 08/08/2017 04:04:32
+====================================
+
+SELECT id,start_date,duration,text,progress,parent FROM gantt_tasks ORDER BY sortorder
+
+SELECT id,source,target,type FROM gantt_links
+
+Done in 0.31501793861389s
+
+
+
+====================================
+Log started, 08/08/2017 04:06:44
+====================================
+
+Array to string conversion at C:\www-recent\connector-php\codebase\db_common.php line 754
+
+Array to string conversion at C:\www-recent\connector-php\codebase\db_common.php line 754
+
+
+
+====================================
+Log started, 08/08/2017 04:31:07
+====================================
+
+SELECT id,start_date,duration,text,progress,parent FROM gantt_tasks ORDER BY sortorder
+
+SELECT id,source,target,type FROM gantt_links
+
+Done in 0.26301503181458s
+
